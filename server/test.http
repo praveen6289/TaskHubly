@@ -1,0 +1,287 @@
+### Health
+GET http://localhost:3000/api/health
+
+
+
+### unknown
+GET http://localhost:3000/api/unknown
+
+
+### Create Task 1
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Test malformed JSON",
+}
+
+
+### Create Task 2
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+    "title": "Learn Express architecture"
+}
+
+### Get all tasks
+GET http://localhost:3000/api/tasks
+
+
+### Get task by id      
+GET http://localhost:3000/api/tasks/f88d5e3e-5817-470c-956d-90d6d55a6b71
+
+
+### Update task
+PATCH http://localhost:3000/api/tasks/d47ee847-2cfa-4fe3-bfb8-e8597bd7f190
+Content-Type: application/json
+
+{
+    "completed": true
+}
+
+
+### Delete task
+DELETE http://localhost:3000/api/tasks/d47ee847-2cfa-4fe3-bfb8-e8597bd7f190
+
+### Get all tasks
+GET http://localhost:3000/api/tasks
+
+### Get deleted task
+GET http://localhost:3000/api/tasks/d47ee847-2cfa-4fe3-bfb8-e8597bd7f190
+
+###
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Learn Node.js",
+}
+
+### Test: Create task without title
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "completed": false
+}
+
+### Test: Create task with empty title
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": ""
+}
+
+
+### Test: Create task with whitespace-only title
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": "     "
+}
+
+
+
+### Test: Create task with numeric title
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": 123
+}
+
+
+### Test: Create task with null title
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": null
+}
+
+
+### Test: Create task with object title
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": {
+    "value": "Learn Node.js"
+  }
+}
+
+
+### Test: Create task with array title
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": ["Learn", "Node.js"]
+}
+
+
+### Test: Update task with empty object
+PATCH http://localhost:3000/api/tasks/274997fb-bb19-4715-81c8-3030c6972804
+Content-Type: application/json
+
+{}
+
+
+### Test: Update task with array body
+PATCH http://localhost:3000/api/tasks/274997fb-bb19-4715-81c8-3030c6972804
+Content-Type: application/json
+
+["Learn Node.js"]
+
+
+### Test: Update task with null body
+PATCH http://localhost:3000/api/tasks/274997fb-bb19-4715-81c8-3030c6972804
+Content-Type: application/json
+
+null
+
+
+### Test: Update task with unsupported field
+PATCH http://localhost:3000/api/tasks/274997fb-bb19-4715-81c8-3030c6972804
+Content-Type: application/json
+
+{
+  "title": "Learn Node.js",
+  "admin": true
+}
+
+### Test: Update task with numeric title
+PATCH http://localhost:3000/api/tasks/274997fb-bb19-4715-81c8-3030c6972804
+Content-Type: application/json
+
+{
+  "title": 123
+}
+
+
+
+### Test: Update task with empty title
+PATCH http://localhost:3000/api/tasks/274997fb-bb19-4715-81c8-3030c6972804
+Content-Type: application/json
+
+{
+  "title": ""
+}
+
+
+
+### Test: Update task with whitespace-only title
+PATCH http://localhost:3000/api/tasks/274997fb-bb19-4715-81c8-3030c6972804
+Content-Type: application/json
+
+{
+  "title": "     "
+}
+
+###
+PATCH http://localhost:3000/api/tasks/274997fb-bb19-4715-81c8-3030c6972804
+Content-Type: application/json
+
+{
+  "completed": "true"
+}
+
+###
+PATCH http://localhost:3000/api/tasks/274997fb-bb19-4715-81c8-3030c6972804
+Content-Type: application/json
+
+{
+  "completed": 1
+}
+
+###
+PATCH http://localhost:3000/api/tasks/274997fb-bb19-4715-81c8-3030c6972804
+Content-Type: application/json
+
+{
+  "completed": false
+}
+
+###
+PATCH http://localhost:3000/api/tasks/274997fb-bb19-4715-81c8-3030c6972804
+Content-Type: application/json
+
+{
+  "completed": null
+}
+
+
+###
+PATCH http://localhost:3000/api/tasks/274997fb-bb19-4715-81c8-3030c6972804
+Content-Type: application/json
+
+{
+  "title": "Learn Express architecture",
+  "createdAt": "2026-01-01",
+  "completed": false
+}
+
+### Test: Unknown API route
+GET http://localhost:3000/api/unknown
+
+
+
+### Test: Unsupported HTTP method
+PUT http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Unsupported method test"
+}
+
+
+### Test: Request ID
+GET http://localhost:3000/api/health
+
+
+
+### Test: Verify task after rejected updates
+GET http://localhost:3000/api/tasks/274997fb-bb19-4715-81c8-3030c6972804
+
+###
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": ""
+}
+
+
+###
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": "   "
+}
+
+###
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": 123
+}
+
+
+### Test: Create task with null title
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": null
+}
+
+
+
+### Test: Create task without request body
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
